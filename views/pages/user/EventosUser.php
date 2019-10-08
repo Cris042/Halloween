@@ -1,12 +1,12 @@
 <?php 
    $id = $_SESSION['id'];
-   $EventosUser = \models\bd::selectall('chamada','cod_user = ?','id',array( $id ) );
-   $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-   $TotalEventos = ceil(count($EventosUser));
+   @$EventosUser = \models\bd::selectall('chamada','cod_user = ?','id',array( $id ) );
+   @$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+   @$TotalEventos = ceil(count($EventosUser));
     
    foreach($EventosUser as $key => $value)
    {
-        $EventosInscritos[] = \models\bd::select('evento','id = ?', array( $value['cod_evento'] ) );
+        @$EventosInscritos[] = \models\bd::select('evento','id = ?', array( $value['cod_evento'] ) );
 
    }
 ?>
@@ -44,7 +44,7 @@
 
 				<div class="cardbody">
 					<p>
-						<?php echo  \models\main::limita_caracteres($value['descricao'],200)?>
+						<?php echo  \models\main::limita_caracteres($value['descricao'],250)?>
 					</p>
 				</div><!-- /.cardbody -->
 

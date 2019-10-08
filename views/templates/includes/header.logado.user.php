@@ -81,7 +81,7 @@
 		 
 		  $minuto = date('i');
 	      if( $_SESSION['inicio_session'] < $minuto){
-		   @$_SESSION['inicio_session'] = $minuto = date('i + 5');
+		   @$_SESSION['inicio_session'] = $minuto = date('i - 5');
 	   ?>
 			<div class="susto">
 				<img src="views/templates/img/gif.gif" class="d-block w-100" alt="...">

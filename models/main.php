@@ -42,8 +42,8 @@
 						$_SESSION['user'] = true;
 					else if($result['cod'] == 1)
 						$_SESSION['adm'] = true;
-					else
-						$_SESSION['super_adm'] = true;
+					else if($result['cod'] == 2)
+						$_SESSION['sadm'] = true;
 					
 					$_SESSION['id'] = $result['id'];
 					$_SESSION['email'] = $result['email'];

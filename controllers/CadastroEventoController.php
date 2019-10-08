@@ -10,8 +10,10 @@
 			if(isset($_POST['logar']))
 				\models\main::logar();
 				
-			if(@$_SESSION['adm'] == true || @$_SESSION['super_adm'] == true)
+			if(@$_SESSION['adm'] == true)
 				\views\View::render('user/CadastroEvento.php','header.logado.adm.php','footer.none.php');
+			else if (@$_SESSION['sadm'] == true)
+				\views\View::render('user/CadastroEvento.php','HeaderLogadoSadmin.php','footer.php');
 			else
 			    \models\main::redirect(INCLUDE_PATH);
 		}

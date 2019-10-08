@@ -28,6 +28,15 @@
     
     }
 
+    if(isset($_POST['CancelaInscriçao']))
+    {
+           $user = $_POST['user'];
+           $id_evento = $_POST['id'];
+
+           \models\bd::excluir('chamada','cod_user = ? AND cod_evento = ?',array($user,$id_evento));
+           $data['mensagem'] = "<script>location.reload('http://localhost/base/');</script>";
+    }
+
     if(isset($_POST['cadastra-pq']))
     {
 
@@ -49,14 +58,7 @@
     
     }
 
-    if(isset($_POST['CancelaInscriçao']))
-    {
-           $user = $_POST['user'];
-           $id_evento = $_POST['id'];
 
-           \models\bd::excluir('chamada','cod_user = ? AND cod_evento = ?',array($user,$id_evento));
-           $data['mensagem'] = "<script>location.reload('http://localhost/base/');</script>";
-    }
 
     if(isset($_POST['CancelaInscriçao-pq']))
     {

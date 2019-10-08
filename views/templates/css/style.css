@@ -353,11 +353,12 @@ nav.desktop a:hover
 {
 	background: transparent;
 	float: left;
-	min-height: 400px;
-	max-height: 400px;
+	min-height: 440px;
+	max-height: 440px;
 	margin: 1%;
 	border: 1px solid darkorange;
 }
+
 
 .cardhead h2
 {
@@ -653,6 +654,7 @@ textarea:hover
 .from_img input[type=file]
 {
 	display: none;
+	
 }
 
 .form label
@@ -722,6 +724,16 @@ textarea:hover
 	-ms-transform:translate(-50%,-40%);	
 }
 
+
+
+.btn-link a
+{
+	color: #fff;
+	text-decoration: none;
+
+}
+
+
 /*cadastro */
 
 /*cadastro eventos */
@@ -786,6 +798,35 @@ textarea
 }
 /*cadastro eventos */
 
+/*listahem user */
+
+.card-user-img img
+{
+   max-height: 200px;
+   min-height: 200px;
+}
+
+.card-user-img input
+{
+	display: none;
+}
+
+.input input
+{
+
+   border-top: none;
+   border-left: none;
+   border-right: none;
+   background: transparent;
+   border-radius: 0;
+   border-bottom: 2px solid #000;
+   width: 80%;
+  
+}
+
+
+/*listahem user */
+
 /* footer */
 footer 
 {
@@ -828,6 +869,9 @@ footer p
 		width: 90%;
 		margin-left: 5%;
 	}
+
+
+
 	.desktop
 	{
 		display: none;
@@ -906,6 +950,15 @@ footer p
 		zoom: 125%;
 
 	}
+
+	.modal .from_img label
+	{
+		padding-bottom: 20%;
+		border-radius: 50%;
+		width: 40%;
+		height: 40%;
+	}
+
 
 	
 

@@ -193,7 +193,7 @@
 
 				<div class="cardbody">
 					<p>
-						<?php echo  \models\main::limita_caracteres($value['descricao'],200)?>
+						<?php echo  \models\main::limita_caracteres($value['descricao'],250)?>
 					</p>
 				</div><!-- /.cardbody -->
 

@@ -16,7 +16,9 @@
 			if(@$_SESSION['user'] == true  )
 				\views\View::render('user/home.php','header.logado.user.php','footer.php');
 			else if(@$_SESSION['adm'] == true )
-			     \views\View::render('user/home.php','header.logado.adm.php','footer.php');
+				 \views\View::render('user/home.php','header.logado.adm.php','footer.php');
+			else if (@$_SESSION['sadm'] == true)
+				 \views\View::render('user/home.php','HeaderLogadoSadmin.php','footer.php');
 			else
 			    \views\View::render('user/home.php');
 		}
