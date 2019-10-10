@@ -11,8 +11,8 @@
 	include('models/bd.php');
 	include('models/main.php');
 	
-	if(@$_SESSION['inicio_session'] == "")
-	    $_SESSION['inicio_session'] =  date('i');
+
+	$_SESSION['inicio_session'] =  date('i');
 
 	$application = new Application();
 	$application->run();

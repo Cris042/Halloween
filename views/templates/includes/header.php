@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 	<head>
 		<title>Ola mundo</title>
 		<!--======================================= Meta tags==============================================-->
@@ -9,7 +9,7 @@
 		<!--===============================================================================================-->	
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!--===============================================================================================-->	
-		<link rel="shortcut icon" href="views/templates/img/" />
+		<!-- <link rel="shortcut icon" href="views/templates/img/" /> -->
 		<!--===============================================================================================-->	
 		<meta name="description" content="" />
 		<!--===============================================================================================-->	
@@ -74,7 +74,7 @@
 		 
 		  $minuto = date('i');
 	      if( $_SESSION['inicio_session'] < $minuto){
-		   @$_SESSION['inicio_session'] = $minuto = date('i + 5');
+			$_SESSION['inicio_session'] = $minuto + 5;
 	   ?>
 			<div class="susto">
 				<img src="views/templates/img/gif.gif" class="d-block w-100" alt="...">
@@ -110,7 +110,7 @@
 
 						<input class="input-senha" type="password" placeholder="Senha" id = "icone-senha" name = "senha" />
 
-						<button class="btn btn-logar" type="submit" name="logar">Logar</button>
+						<button class="btn btn-cadastra btn-card" type="submit" name="logar">Logar</button>
 						
 					</form>
 				</div>

@@ -5,7 +5,7 @@
 	{
 		
 		public function index()
-		{
+		{   
 		
 			if (@$_SESSION['sadm'] == true)
 				\views\View::render('user/GestaoUsuarios.php','HeaderLogadoSadmin.php','footer.php');

@@ -1,7 +1,6 @@
 <?php 
    $id = $_SESSION['id'];
    @$EventosUser = \models\bd::selectall('chamada','cod_user = ?','id',array( $id ) );
-   @$paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
    @$TotalEventos = ceil(count($EventosUser));
     
    foreach($EventosUser as $key => $value)
@@ -38,7 +37,7 @@
 			<div class="card card_id<?php echo $value['id']; ?> w33" >
 				<div class="cardhead">
 				    <div class="text-center">
-						<h2> <?php echo  \models\main::limita_caracteres($value['nome'],12)?><h2>
+						<h2> <?php echo  \models\main::limita_caracteres($value['nome'],10)?><h2>
 					</div>
 				</div><!-- /.cardhead -->
 
@@ -119,7 +118,10 @@
 					</div>
 
 					<div class="modal-body">
-								<p><?php echo  $value['descricao'] ?></p>
+								<p><?php echo  $value['descricao'] ?></p><br><br>
+								<p class="text-center"><b>
+									<?php echo  $value['local'] ?> - <?php echo $value['data']?> (<?php echo $value['horario'] ?>)
+								</b></p>
 					</div>
 
 					<div class="modal-footer">

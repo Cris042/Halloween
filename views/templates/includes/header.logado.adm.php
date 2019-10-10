@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 	<head>
 		<title>Ola mundo</title>
 		<!--======================================= Meta tags==============================================-->
@@ -9,7 +9,7 @@
 		<!--===============================================================================================-->	
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!--===============================================================================================-->	
-		<link rel="shortcut icon" href="views/templates/img/" />
+		<!-- <link rel="shortcut icon" href="views/templates/img/" /> -->
 		<!--===============================================================================================-->	
 		<meta name="description" content="" />
 		<!--===============================================================================================-->	
@@ -82,7 +82,7 @@
 		 
 		  $minuto = date('i');
 	      if( $_SESSION['inicio_session'] < $minuto){
-		   @$_SESSION['inicio_session'] = $minuto = date('i - 5');
+			$_SESSION['inicio_session'] = $minuto + 5;
 	   ?>
 			<div class="susto">
 				<img src="views/templates/img/gif.gif" class="d-block w-100" alt="...">
@@ -138,11 +138,11 @@
 								<input type="hidden" name="cod" value="<?php echo $user[4] ?>" />
 								<input type="hidden" name="id" value="<?php echo $user[0] ?>" />
 
-								<button class="btn btn-cadastra" type="submit" name="cadastra-user">Atualiza Dados</button>
+								<button class="btn btn-cadastra btn-card" type="submit" name="cadastra-user">Atualiza Dados</button>
 						</form>
 				</div>
 				<div class="modal-footer">
-						<button type="button" class="btn btn-info btn-100" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-info btn-100 " data-dismiss="modal">Close</button>
 				</div>
 				</div>
 			</div>

@@ -5,19 +5,19 @@
             <div class="form_body">
                         
                 <div class="form-gup">
-                    <select name="turma" require>
+                    <select name="turma" required>
                         <option value="3° Ano"> 3 ano </option>
                         <option value="2° Ano"> 2 ano </option>
                     </select>
 
-                    <select name="grupo" require>
+                    <select name="grupo" required>
                         <option value="Dança"> Dança </option>
                         <option value="Apresentaçao"> Apresentaçao </option>
                     </select>
                 </div>
 
                 <div class="form-gup">
-                    <select name="horario" require>
+                    <select name="horario" required>
                         <option value="12:00"> 12:00 </option>
                         <option value="11:00"> 11:00 </option>
                     </select>
@@ -29,10 +29,10 @@
                </div>
 
                 <div class = "form-op">
-                    <input type ="text" placeholder="titulo"  name ="titulo" require />
+                    <input type ="text" placeholder="titulo"  name ="titulo" required />
                 </div>
 
-                <textarea name="descricao" placeholder="descriçao" require>
+                <textarea name="descricao" placeholder="descriçao" required>
 
                 </textarea>
 

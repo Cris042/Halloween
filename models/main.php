@@ -6,16 +6,18 @@
     {
         function limita_caracteres($texto, $limite, $quebra = true)
 		{
-			$tamanho = strlen($texto);
+			mb_internal_encoding("UTF-8");
+			$texto =  $texto;
+			$tamanho =  mb_strlen( $texto, 'UTF-8' );
 			if($tamanho <= $limite)
 			{ 
-			   $novo_texto = $texto;
+			   $novo_texto =  $texto ;
 			}
 			else
 			{ 
 			   if($quebra == true)
 			   { 
-				  $novo_texto = trim(substr($texto, 0, $limite))."...";
+				  $novo_texto = trim(mb_substr( $texto, 0, $limite ))."...";
 			   }
 			   else
 			   { 

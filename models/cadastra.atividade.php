@@ -17,12 +17,12 @@
         if($verifica == true)
         {
             \models\bd::inserir('chamada','?,?',array($user,$id));
-            $data['mensagem'] = "<script>location.reload('http://localhost/base/');</script>";
+            $data['mensagem'] = "<script>location.reload('http://localhost/base/#eventos');</script>";
            
         }
         else
         {
-            $data['mensagem'] = "Usuario ja Cadastrado";
+            $data['mensagem'] = "<script>location.reload('http://localhost/base/#eventos');</script>";
             $data['sucesso'] = false;
         }
     
@@ -34,7 +34,7 @@
            $id_evento = $_POST['id'];
 
            \models\bd::excluir('chamada','cod_user = ? AND cod_evento = ?',array($user,$id_evento));
-           $data['mensagem'] = "<script>location.reload('http://localhost/base/');</script>";
+           $data['mensagem'] = "<script>location.reload('http://localhost/base/#eventos');</script>";
     }
 
     if(isset($_POST['cadastra-pq']))
@@ -52,7 +52,7 @@
         }
         else
         {
-            $data['mensagem'] = "Usuario ja Cadastrado";
+            \models\main::redirect("http://localhost/base/#eventos");
             $data['sucesso'] = false;
         }
     

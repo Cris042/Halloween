@@ -186,7 +186,7 @@
 						   <p class="card-estado">INSCRITO</p>
 						<?php }?>
 
-						<h2> <?php echo  \models\main::limita_caracteres($value['nome'],12)?><h2>
+						<h2> <?php echo  \models\main::limita_caracteres($value['nome'],10)?><h2>
 
 					</div>
 				</div><!-- /.cardhead -->
@@ -220,6 +220,12 @@
 					    <button type="button" class="btn btn-info btn-100" data-toggle="modal" data-target="#exampleModalScrollable<?php echo $value['id'] ?>">
 							Mais detalhes
 						</button>
+
+						<?php if(@$_SESSION['sadm'] == true) { ?>
+							<button class="btn btn-info btn-100">
+								  Atualizar
+							</button>
+						<?php } ?>
 					
 					 
 				</div><!-- /.cardfooter -->
@@ -233,7 +239,7 @@
 			<ul class="pagination">
 			 <?php for($i = 0; $i < $total_paginas; $i++){ ?>
 				<li class="page-item text-center">
-					<a href="<?php echo INCLUDE_PATH ?>base?pagina=<?php echo $i + 1 ?>"><?php echo $i + 1 ?></a>
+					<a href="<?php echo INCLUDE_PATH ?>?pagina=<?php echo $i + 1 ?>"><?php echo $i + 1 ?></a>
 				</li>
 			 <?php } ?>
 			</ul>
@@ -279,7 +285,10 @@
 					</div>
 
 					<div class="modal-body">
-								<p><?php echo  $value['descricao'] ?></p>
+								<p><?php echo  $value['descricao'] ?></p><br><br>
+								<p class="text-center"><b>
+									<?php echo  $value['local'] ?> - <?php echo $value['data']?> (<?php echo $value['horario'] ?>)
+								</b></p>
 					</div>
 
 					<div class="modal-footer">

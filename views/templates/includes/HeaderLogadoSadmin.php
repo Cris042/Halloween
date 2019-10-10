@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 	<head>
 		<title>Ola mundo</title>
 		<!--======================================= Meta tags==============================================-->
-		<meta charset="UTF-8">	
+		<meta charset="utf-8">	
 		<!--======================================= Meta tags==============================================-->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<!--===============================================================================================-->	
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!--===============================================================================================-->	
-		<link rel="shortcut icon" href="views/templates/img/" />
+		<!-- <link rel="shortcut icon" href="views/templates/img/" /> -->
 		<!--===============================================================================================-->	
 		<meta name="description" content="" />
 		<!--===============================================================================================-->	
@@ -45,7 +45,7 @@
 							<li ><a href="<?php echo INCLUDE_PATH; ?>#sobre">Sobre</a></li>
                             <li ><a href="<?php echo INCLUDE_PATH; ?>#eventos">Eventos</a></li>
 							<li ><a href="<?php echo INCLUDE_PATH; ?>GestaoUsuarios">Gestao de Usuarios</a></li>
-							<li ><a href="<?php echo INCLUDE_PATH; ?>MeusEventos">Gestao de Eventos</a></li>										
+							<li ><a href="<?php echo INCLUDE_PATH; ?>CadastroEvento">Cadasta Eventos</a></li>										
 						</ul>
 
 					</nav><!-- /.desktop -->
@@ -64,7 +64,6 @@
 									<li ><a href="<?php echo INCLUDE_PATH; ?>MeusEventos">Meus Eventos</a></li>
 									<li ><a href="<?php echo INCLUDE_PATH; ?>CadastroEvento">Cadasta Eventos</a></li>
 									<li ><a href="<?php echo INCLUDE_PATH; ?>GestaoUsuarios">Gestao de Usuarios</a></li>
-									<li ><a href="<?php echo INCLUDE_PATH; ?>MeusEventos">Gestao de Eventos</a></li>	
 									<li ><a href="<?php echo INCLUDE_PATH; ?>?loggout">Sair</a></li>
 									<li data-toggle="modal" data-target="#exampleModalCenterr"><p>Perfil</p></li>
 								</ul>
@@ -79,11 +78,11 @@
 				<img class="img-perfil" src="views/templates/upload/<?php echo $_SESSION['img'] ?>" alt="...">
 		</div><!-- /.img-perfil -->
 		
-	   <?php
+	    <?php
 		 
 		  $minuto = date('i');
-	      if( $_SESSION['inicio_session'] < $minuto){
-		   @$_SESSION['inicio_session'] = $minuto = date('i - 5');
+	      if( $_SESSION['inicio_session'] < $minuto ){
+			$_SESSION['inicio_session'] = $minuto + 5;
 	   ?>
 			<div class="susto">
 				<img src="views/templates/img/gif.gif" class="d-block w-100" alt="...">
@@ -139,17 +138,17 @@
 								<input type="hidden" name="cod" value="<?php echo $user[4] ?>" />
 								<input type="hidden" name="id" value="<?php echo $user[0] ?>" />
 
-								<button class="btn btn-cadastra" type="submit" name="cadastra-user">Atualiza Dados</button>
+								<button class="btn btn-cadastra  btn-card" type="submit" name="cadastra-user">Atualiza Dados</button>								
 						</form>
+								<button class="btn btn-cadastra  btn-card  btn-desktop">
+							  			 <a href="<?php echo INCLUDE_PATH; ?>MeusEventos">Meus Eventos</a>
+								</button>
 				</div>
-				<div class="modal-footer">
-					     <button type="button" class="btn btn-info btn-link btn-100">
-                            <a href="<?php echo INCLUDE_PATH; ?>MeusEventos">Meus Eventos</a>
+				<div class="modal-footer">		
+						<button class="btn btn-cadastra  btn-card btn-desktop">
+								<a href="<?php echo INCLUDE_PATH; ?>?loggout">Sair</a>
 						</button>
-						
-                        <button type="button" class="btn btn-info btn-link btn-100 ">
-							<a href="<?php echo INCLUDE_PATH; ?>?loggout">Sair</a>
-						</button>
+						<button type="button" class="btn btn-info btn-100 btn-moblile" data-dismiss="modal">Close</button>
 				</div>
 				</div>
 			</div>

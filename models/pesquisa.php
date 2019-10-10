@@ -1,8 +1,8 @@
 <?php
-   
+   session_start();
    include('../MySql.php'); 
    include('../models/bd.php'); 
-   include('../models/main.php'); 
+   include('../models/main.php');
    $data = "";
    if(isset($_POST['pesquisa']))
    {
@@ -41,10 +41,10 @@
                         </div><!-- /.cardbody -->
                         <div class="cardfooter">
                             ';
-                     else
+                     else 
                      {
                         $data.=
-                        '  <h2> '.\models\main::limita_caracteres($value['nome'],12).'<h2>
+                        '  <h2> '.\models\main::limita_caracteres($value['nome'],10).'<h2>
                         </div>
                         </div><!-- /.cardhead -->
                         <div class="cardbody">
@@ -83,15 +83,36 @@
                     }
                             
                         
+                    if(@$_SESSION['sadm'] == true) 
+                    {   
+                        $data.=
+                            '
+                            <button type="button" class="btn btn-info btn-100" data-toggle="modal" data-target="#exampleModalScrollable'.$value['id'].'">
+                                Mais detalhes
+                            </button>
+
+                            <button class="btn btn-info btn-100">
+								  Atualizar
+                            </button>
+                            
+                            </div><!-- /.cardfooter -->
+                            </div><!-- /.card -->
+                        ';
+                    }
+                    else
+                    {
+                        $data.='
+                           
+                            <button type="button" class="btn btn-info btn-100" data-toggle="modal" data-target="#exampleModalScrollable'.$value['id'].'">
+                                 Mais detalhes
+                            </button>
+
+                    
+                            </div><!-- /.cardfooter -->
+                            </div><!-- /.card -->
                         
-                    $data.=
-                        '
-                        <button type="button" class="btn btn-info btn-100" data-toggle="modal" data-target="#exampleModalScrollable'.$value['id'].'">
-                            Mais detalhes
-                        </button>
-                        </div><!-- /.cardfooter -->
-                        </div><!-- /.card -->
-                    ';
+                          ';
+                    }
         }
 
         $data .= ' <div class="clear"></div>';
@@ -101,49 +122,59 @@
      {
          
            $busca = strip_tags($_POST['pesquisa-user']);
-           $users = \models\bd::selectall('user','id = ?','',array(87) );
+           $id = $_POST['id'];
+           $query = " WHERE email LIKE '%$busca%' AND id != '$id' "; 
+           $users =  \models\bd::selectAll('user');
+           $TotalUsers = ceil( count($users) );
+           $user =  \models\bd::selectlimit('user',$query,0,$TotalUsers);
            
-          foreach ($users as $key => $value) 
+          foreach ($user as $key => $value) 
           {   
               $data .='
-                    <form  class = "ajax" enctype="multipart/form-data" method="post" action="models/AtualizaDados.php">
-                        <div class="card card_id'.$value['id'].' w33" >
-                            <div class="card-user-img">
-                                <input type="file" id="input-img'.$value['id'].'" name="img'. $value['id'].'" />
-                                <label for="input-img'.$value['id'].'"><img  src="views/templates/upload/'.$value['img'].'" alt="..."></label>
-                            </div>	
-                            
-                            <div class="input"> 
-                                <input 
-                                        type="text" name = "email'.$value['id'].'" placeholder="Email" 
-                                        required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-                                        value="'.$value['email'].'"
-                                />
-                            </div>
-                            
-                            <div class="input"> 
-                                <input 
-                                        class="input-senha" type="password" name = "senha'.$value['id'].'" autocomplete="false"
-                                        placeholder="Nova senha 6 digitos.." require pattern="[0-9a-zA-Z]{5,}"
-                                />
-                            </div>
-                            
-                            <input type="hidden" name="emailatual'.$value['id'].'" value="'.$value['email'].'" />
-                            <input type="hidden" name="senhaatual'.$value['id'].'" value="'.$value['senha'].'" />
-                            <input type="hidden" name="imgatual'.$value['id'].'" value="'.$value['img'].'" />
-                            <input type="hidden" name="cod'.$value['id'].'" value="'.$value['cod'].'" />
-                            <input type="hidden" name="id" value="'.$value['id'].'" />
-                            
-                            <button class="btn btn-cadastra" type="submit" name="atualizar-user">Atualiza Dados</button>
-                            <button class="btn btn-cadastra" type="submit" name="atualiza-user">Ver Atividades</button>
-                            
-                        </div><!-- /.card -->
-                    </form>
+                <div class="card card_id'.$value['id'] .'w33" >
+                    <div class="card-user-img">
+                        <input type="file" id="input-img'.$value['id'].'" name="img" />
+                        <label for="input-img'.$value['id'].'"><img  src="views/templates/upload/'.$value['img'].'" alt="..."></label>
+                    </div>	
+                    
+                    <div class="input"> 
+                        <p> ';
+                     
+                      
+                        if($value['cod'] == 0) 
+                            $data .= "User";
+                        else if($value['cod'] == 1)
+                            $data .= "Admin";
+                        else if($value['cod'] == 2)
+                             $data .= "Super Admin";
+                   
+                        
+                 $data .=' 
+                        </p>
+                     </div>
+                    
+                    <div class="input"> 
+                        <p> 
+                                '.$value['email'].'
+                        </p>
+                    </div>
+                    
+                    
+                    <button class="btn btn-cadastra btn-card"  name="atualizar-user">
+                        <a href="http://localhost/base/AtualizaUser?id='.$value['id'].'"> Atualiza User </a>
+                    </button>                            
+            
+                    <button class="btn btn-cadastra btn-card"   data-toggle="modal" 
+                    data-target="#exampleModalScrollable'.$value['id'].'">
+                        Ver Atividades
+                    </button>
+                </div><!-- /.card -->
               ';
              
           }
+          
        $data .= ' <div class="clear"></div>';
-
+     }
    echo $data;
-}
+
 ?>

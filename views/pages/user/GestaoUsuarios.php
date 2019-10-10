@@ -29,37 +29,36 @@
 				foreach($User as $key => $value){ 		
 		?>
             <div class="card card_id<?php echo $value['id']; ?> w33" >
-                <form  class = "ajax" enctype="multipart/form-data" method="post" action="models/AtualizaDados.php">
                     <div class="card-user-img">
-                        <input type="file" id="input-img<?php echo $value['id']?>" name="img<?php echo $value['id']?>" />
+                        <input type="file" id="input-img<?php echo $value['id']?>" name="img" />
                         <label for="input-img<?php echo $value['id']?>"><img  src="views/templates/upload/<?php echo $value['img'] ?>" alt="..."></label>
                     </div>	
                   
                     <div class="input"> 
-                        <input 
-                                type="text" name = "email<?php echo $value['id']?>" placeholder="Email" 
-                                required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-                                value="<?php echo $value['email']?>"
-                        />
+                        <p> 
+                                <?php 
+                                    if($value['cod'] == 0) 
+                                        echo "User";
+                                    else if($value['cod'] == 1)
+                                         echo "Admin";
+                                    else if($value['cod'] == 2)
+                                         echo "Super Admin";
+                                ?>
+                        </p>
                     </div>
                     
                     <div class="input"> 
-                        <input 
-                                class="input-senha" type="password" name = "senha<?php echo $value['id']?>" autocomplete="false"
-                                placeholder="Nova senha 6 digitos.." require pattern="[0-9a-zA-Z]{5,}"
-                        />
+                        <p> 
+                               <?php echo $value['email']?>
+                        </p>
                     </div>
                     
-					<input type="hidden" name="emailatual<?php echo $value['id']?>" value="<?php echo $value['email'] ?>" />
-					<input type="hidden" name="senhaatual<?php echo $value['id'] ?>" value="<?php echo $value['senha'] ?>" />
-					<input type="hidden" name="imgatual<?php echo $value['id'] ?>" value="<?php echo $value['img'] ?>" />
-					<input type="hidden" name="cod<?php echo $value['id'] ?>" value="<?php echo $value['cod'] ?>" />
-                    <input type="hidden" name="id" value="<?php echo $value['id'] ?>" />
                     
-                    <button class="btn btn-cadastra" type="submit" name="atualizar-user">Atualiza Dados</button>                            
-                </form>
-
-                    <button class="btn btn-cadastra"   data-toggle="modal" 
+                    <button class="btn btn-cadastra btn-card"  name="atualizar-user">
+                        <a href="<?php echo INCLUDE_PATH ?>AtualizaUser?id=<?php echo $value['id']?>"> Atualiza User </a>
+                    </button>                            
+             
+                    <button class="btn btn-cadastra btn-card"   data-toggle="modal" 
                      data-target="#exampleModalScrollable<?php echo $value['id'] ?>">
                         Ver Atividades
                     </button>
@@ -108,7 +107,29 @@
 					</div>
 
 					<div class="modal-body">
-							
+                            <?php  
+                                  @$EventosInscritos = null;
+                                  $id = $value['id'];
+                                  @$EventosUser = \models\bd::selectall('chamada','cod_user = ?','id',array( $id ) );
+                                  @$TotalEventos = ceil(count($EventosUser));
+    
+                                    foreach($EventosUser as $key => $value)
+                                    {
+                                            @$EventosInscritos[] = \models\bd::select('evento','id = ?', array( $value['cod_evento'] ) );
+
+                                    }
+                            ?>
+                            <?php 	 
+                                if($TotalEventos > 0)
+                                    foreach($EventosInscritos as $key => $value){ 		
+                            ?>
+                                  <div class="card-atividades-user">
+                                      <i class="fas fa-ghost" aria-hidden="true"></i>
+                                      <p ><?php echo $value['nome']; ?></p>
+                                  </div>
+
+                            <?php }?>
+
 					</div>
 
 					<div class="modal-footer">
