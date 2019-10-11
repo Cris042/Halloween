@@ -178,7 +178,7 @@
 			 @$Verifica = \models\bd::select('chamada','cod_user = ? AND cod_evento = ?',array( $_SESSION['id'],$value['id'] ) );
 		?>
            
-			<div class="card card_id<?php echo $value['id']; ?> w33" >
+			<div class="card card_id<?php echo $value['id']; ?> w50" >
 				<div class="cardhead">
 				    <div class="text-center">
 
@@ -186,14 +186,14 @@
 						   <p class="card-estado">INSCRITO</p>
 						<?php }?>
 
-						<h2> <?php echo  \models\main::limita_caracteres($value['nome'],10)?><h2>
+						<h2> <?php echo  \models\main::limita_caracteres($value['nome'],16)?><h2>
 
 					</div>
 				</div><!-- /.cardhead -->
 
 				<div class="cardbody">
 					<p>
-						<?php echo  \models\main::limita_caracteres($value['descricao'],250)?>
+						<?php echo  \models\main::limita_caracteres($value['descricao'],260)?>
 					</p>
 				</div><!-- /.cardbody -->
 
@@ -223,7 +223,7 @@
 
 						<?php if(@$_SESSION['sadm'] == true) { ?>
 							<button class="btn btn-info btn-100">
-								  Atualizar
+								<a href="GestaoEvento?id=<?php echo $value['id'] ?>">Gerir</a>
 							</button>
 						<?php } ?>
 					

@@ -29,16 +29,16 @@
            if($PorcentagemNome > 40 || $PorcentagemGrupo > 30 || $PorcentagemTurma > 25)
            {
                 $data.='
-                    <div class="card card_id'.$value['id'].' w33" >
+                    <div class="card card_id'.$value['id'].' w50" >
                         <div class="cardhead">
                             <div class="text-center">
-                                <h2> '.\models\main::limita_caracteres($value['nome'],12).'<h2>
+                                <h2> '.\models\main::limita_caracteres($value['nome'],16).'<h2>
                             </div>
                         </div><!-- /.cardhead -->
 
                         <div class="cardbody">
                             <p>
-                                '.\models\main::limita_caracteres($value['descricao'],200).'
+                                '.\models\main::limita_caracteres($value['descricao'],260).'
                             </p>
                         </div><!-- /.cardbody -->
 

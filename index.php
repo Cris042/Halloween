@@ -2,6 +2,7 @@
 	session_start();
 	define('BASE_DIR',__DIR__.'/');
 	define('INCLUDE_PATH','/base/');
+	// define('INCLUDE_PATH','//192.168.0.104/base/');
 	date_default_timezone_set('America/Sao_Paulo');
 	
 	include('Application.php');
@@ -12,7 +13,8 @@
 	include('models/main.php');
 	
 
-	$_SESSION['inicio_session'] =  date('i');
+	if(@$_SESSION['inicio_session'] == "")
+		@$_SESSION['inicio_session'] =  date('i');
 
 	$application = new Application();
 	$application->run();

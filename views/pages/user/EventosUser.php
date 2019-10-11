@@ -34,16 +34,16 @@
 				foreach($EventosInscritos as $key => $value){ 		
 		?>
            
-			<div class="card card_id<?php echo $value['id']; ?> w33" >
+			<div class="card card_id<?php echo $value['id']; ?> w50" >
 				<div class="cardhead">
 				    <div class="text-center">
-						<h2> <?php echo  \models\main::limita_caracteres($value['nome'],10)?><h2>
+						<h2> <?php echo  \models\main::limita_caracteres($value['nome'],16)?><h2>
 					</div>
 				</div><!-- /.cardhead -->
 
 				<div class="cardbody">
 					<p>
-						<?php echo  \models\main::limita_caracteres($value['descricao'],250)?>
+						<?php echo  \models\main::limita_caracteres($value['descricao'],260)?>
 					</p>
 				</div><!-- /.cardbody -->
 

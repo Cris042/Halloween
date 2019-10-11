@@ -3,6 +3,12 @@
     padding: 0;
 }
 
+.w50
+{
+    min-width: 50%;
+    max-width: 50%;
+}
+
 body
 {
 	background-image: url(../img/img2.jpg);
@@ -40,7 +46,7 @@ body
     transform:translate(-50%,0%);
     margin-top: 5%;
     margin-bottom: 5%;
--ms-transform:translate(-50%,0%);	
+    -ms-transform:translate(-50%,0%);	
 }
 
 table
@@ -60,7 +66,7 @@ th
 {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: justify;
+    text-align: center;
     background: #fff;
     color: #000;
     font-weight: 100;

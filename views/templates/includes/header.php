@@ -116,7 +116,7 @@
 				</div>
 				<div class="modal-footer">
 					<div class="txt-footer-login">
-						<p> crie uma conta : <a href="<?php echo INCLUDE_PATH ?>cadastro">Cadastre-se</a>
+						<p> Crie uma conta : <a href="<?php echo INCLUDE_PATH ?>cadastro">Cadastre-se</a>
 		            </div>
 				</div>
 				</div>

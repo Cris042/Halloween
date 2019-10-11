@@ -8,7 +8,7 @@
 		{   
 		
 			if (@$_SESSION['sadm'] == true)
-				\views\View::render('user/AtualizaUser.php','HeaderLogadoSadmin.php','footer.php');
+				\views\View::render('user/AtualizaUser.php','HeaderLogadoSadmin.php','footer.none.php');
 			else
 			    \models\main::redirect(INCLUDE_PATH);
 		}

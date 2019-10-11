@@ -24,19 +24,19 @@
         {   
             $Verifica = \models\bd::select('chamada','cod_user = ? AND cod_evento = ?',array( $user,$value['id'] ) );      
                 $data.='
-                    <div class="card w33 card_id'.$value['id'].'w33">
+                    <div class="card w50 card_id'.$value['id'].'">
                     <div class="cardhead ">
                         <div class="text-center">';
 
                    if($Verifica != "")
                        $data.=
                         ' <p class="card-estado">INSCRITO</p>
-                            <h2> '.\models\main::limita_caracteres($value['nome'],12).'<h2>
+                            <h2> '.\models\main::limita_caracteres($value['nome'],16).'<h2>
                         </div>
                         </div><!-- /.cardhead -->
                         <div class="cardbody">
                             <p>
-                                '.\models\main::limita_caracteres($value['descricao'],200).'
+                                '.\models\main::limita_caracteres($value['descricao'],260).'
                             </p>
                         </div><!-- /.cardbody -->
                         <div class="cardfooter">
@@ -44,12 +44,12 @@
                      else 
                      {
                         $data.=
-                        '  <h2> '.\models\main::limita_caracteres($value['nome'],10).'<h2>
+                        '  <h2> '.\models\main::limita_caracteres($value['nome'],16).'<h2>
                         </div>
                         </div><!-- /.cardhead -->
                         <div class="cardbody">
                             <p>
-                                '.\models\main::limita_caracteres($value['descricao'],200).'
+                                '.\models\main::limita_caracteres($value['descricao'],260).'
                             </p>
                         </div><!-- /.cardbody -->
                         <div class="cardfooter">
@@ -92,8 +92,8 @@
                             </button>
 
                             <button class="btn btn-info btn-100">
-								  Atualizar
-                            </button>
+								<a href="GestaoEvento?id='.$value['id'].'">Gerir</a>
+							</button>
                             
                             </div><!-- /.cardfooter -->
                             </div><!-- /.card -->

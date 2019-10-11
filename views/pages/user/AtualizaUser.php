@@ -48,7 +48,7 @@
                               <?php 
                                     if($user[4] == 0) 
                                         echo "User";
-                                    else if($user´[4] == 1)
+                                    else if($user[4] == 1)
                                          echo "Admin";
                                     else if($user[4] == 2)
                                          echo "Super Admin";

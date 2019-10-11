@@ -13,7 +13,7 @@
 			if(@$_SESSION['adm'] == true)
 				\views\View::render('user/CadastroEvento.php','header.logado.adm.php','footer.none.php');
 			else if (@$_SESSION['sadm'] == true)
-				\views\View::render('user/CadastroEvento.php','HeaderLogadoSadmin.php','footer.php');
+				\views\View::render('user/CadastroEvento.php','HeaderLogadoSadmin.php','footer.none.php');
 			else
 			    \models\main::redirect(INCLUDE_PATH);
 		}

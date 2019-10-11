@@ -2,8 +2,6 @@
    $id = $_SESSION['id'];
    @$User = \models\bd::selectall('user','id != ?','id',array( $id ) );
    @$TotalUser = ceil(count($User));
-    
-   
 ?>
 <section id="eventos">
    <div class="eventos">

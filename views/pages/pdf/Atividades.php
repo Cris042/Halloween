@@ -3,6 +3,7 @@
     include('../../MySql.php'); 
     include('../../models/bd.php'); 
     $EventosUser = \models\bd::selectall('chamada','cod_user = ?','id',array( $_SESSION['id'] ) );
+    $User = \models\bd::select('user','id = ?',array( $_SESSION['id'] ));
     $TotalEventos = ceil(count($EventosUser));
      
     foreach($EventosUser as $key => $value)
@@ -18,7 +19,7 @@
     </head>
  
     <body>
-        <h2 class="text-center">Atividades</h2>
+        <h2 class="text-center">Atividades do user <?php echo $User[1]?></h2>
         <div class="wraper-table">            
             <table>              
                 <tr>  

@@ -126,7 +126,7 @@
 								</div>
 						 
 								<input 
-									class="input-senha" type="password" name = "senha" autocomplete="false"
+									class="input-senha" type="password" name = "senha" autocomplete="off"
 									placeholder="Nova senha 6 digitos.." require pattern="[0-9a-zA-Z]{5,}"
 								/>
 								
