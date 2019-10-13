@@ -3,10 +3,17 @@
    {
          $id = (int)$_GET['id'];
 
+
          if($id == "")
              \models\main::redirect(INCLUDE_PATH);
          else
+         {
             $Evento = \models\bd::select('evento','id = ?',array( $id )); 
+            $Verifica = \models\bd::select('evento','id = ? AND cod_autor = ?',array( $id,$_SESSION['id'] )); 
+         }
+
+        if($Verifica == "" && @$_SESSION['adm'] == true)
+            \models\main::redirect(INCLUDE_PATH);
      
    }
    else 
@@ -64,8 +71,9 @@
             
         </form>
                
-            <button class="btn btn-cadastra" name="cadastra-evento">
-                        <a href="models/pdf/Evento.php?id=<?php echo $Evento[0]?>">Gerar Pdf </a>
+           
+            <button class="btn btn-cadastra"   data-toggle="modal" data-target="#exampleModalScrollable">
+                 Ver usuarios inscritos
             </button>
             
     </div><!-- /.form -->
@@ -92,3 +100,48 @@
     </div>
     </div>
 <!-- Modal -->
+
+
+        <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-scrollable" role="document">
+				<div class="modal-content">
+
+				    <div class="modal-header">
+						<h5>Usuarios inncrito no evento  <?php echo $Evento[3] ?> </h5>
+					</div>
+
+					<div class="modal-body">
+                            <?php  
+                                  @$EventosInscritos = null;
+                                  @$EventosUser = \models\bd::selectall('chamada','cod_evento = ?','id',array( $id ) );
+                                  @$TotalEventos = ceil(count($EventosUser));
+    
+                                    foreach($EventosUser as $key => $value)
+                                    {
+                                            @$EventosInscritos[] = \models\bd::select('user','id = ?', array( $value['cod_user'] ) );
+
+                                    }
+                            ?>
+                            <?php 	 
+                                if($TotalEventos > 0)
+                                    foreach($EventosInscritos as $key => $value){ 		
+                            ?>
+                                  <div class="card-atividades-user">
+                                      <img  src="views/templates/upload/<?php echo $value['img'] ?>" alt="...">
+                                      <p ><?php echo \models\main::limita_caracteres($value['email'],22) ?></p>
+                                  </div>
+
+                            <?php }?>
+
+					</div>
+
+					<div class="modal-footer">
+                        <button class="btn btn-cadastra" name="cadastra-evento">
+                            <a href="models/pdf/Evento.php?id=<?php echo $Evento[0]?>">Gerar Pdf </a>
+                        </button>
+					</div>
+					
+				</div>			
+			</div>
+		</div>
+

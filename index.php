@@ -1,8 +1,8 @@
 <?php
 	session_start();
 	define('BASE_DIR',__DIR__.'/');
-	// define('INCLUDE_PATH','/base/');
-	define('INCLUDE_PATH','//192.168.0.104/base/');
+	define('INCLUDE_PATH','/base/');
+	// define('INCLUDE_PATH','//192.168.0.104/base/');
 	date_default_timezone_set('America/Sao_Paulo');
 	
 	include('Application.php');

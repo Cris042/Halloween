@@ -35,7 +35,7 @@
                 <textarea name="descricao" placeholder="descriçao" required>
 
                 </textarea>
-
+                <input type="hidden" name = "autor" value="<?php echo $_SESSION['id'] ?>" />
                 <button class="btn btn-cadastra" type="submit" name="cadastra-evento">Cadastra-se</button>
 
             </div><!-- /.from-body -->

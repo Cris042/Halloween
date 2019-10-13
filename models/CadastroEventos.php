@@ -16,6 +16,7 @@ $data['sucesso'] = true;
           $descricao = strip_tags($_POST['descricao']);
           $verifica = \models\bd::verifica('evento','nome = ?', array( $titulo ) );
           $date = date('Y-m-d');
+          $autor = $_POST['autor'];
          
           if($verifica == false)
           {
@@ -26,7 +27,7 @@ $data['sucesso'] = true;
           if($data['sucesso'] == true)
           {
                
-              \models\bd::inserir('evento','?,?,?,?,?,?,?,?',array( $turma,$grupo,$titulo,$descricao,20,$date,$local,$horario ) );
+              \models\bd::inserir('evento','?,?,?,?,?,?,?,?,?',array( $turma,$grupo,$titulo,$descricao,20,$date,$local,$horario,$autor ) );
               $data['mensagem'] = "cadastro realizado!";
           }
 

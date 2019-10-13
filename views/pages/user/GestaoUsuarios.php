@@ -123,7 +123,7 @@
                             ?>
                                   <div class="card-atividades-user">
                                       <i class="fas fa-ghost" aria-hidden="true"></i>
-                                      <p ><?php echo $value['nome']; ?></p>
+                                      <p ><?php echo \models\main::limita_caracteres($value['nome'],22) ?></p>
                                   </div>
 
                             <?php }?>

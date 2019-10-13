@@ -920,7 +920,7 @@ textarea
 	margin-left: 15%;
 	position: absolute;
 	margin-top: 15px;
-	text-align: justify;
+	text-align: center;
 }
 
 .card-atividades-user i
@@ -929,6 +929,16 @@ textarea
 	margin-top: 10px;
 	margin-left: 10px;
 	position: absolute;
+}
+
+.card-atividades-user img
+{
+	max-width: 55px;
+	max-height: 55px;
+	margin-top: 15px;
+	margin-left: 10px;
+	position: absolute;
+	border-radius: 50%;
 }
 
 .btn-card
@@ -1071,8 +1081,10 @@ footer p
 		margin-top: -25px;
 		
 	}
-
-	
+	.card-atividades-user p
+	{
+		margin-left: 28%;
+	}
 
 	.modal p
 	{

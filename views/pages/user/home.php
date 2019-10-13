@@ -176,6 +176,7 @@
 		<?php 	 
 		    foreach($eventos_pg as $key => $value){ 
 			 @$Verifica = \models\bd::select('chamada','cod_user = ? AND cod_evento = ?',array( $_SESSION['id'],$value['id'] ) );
+			 @$VerificaAdm = \models\bd::select('evento','cod_autor = ? AND id= ?',array( $_SESSION['id'],$value['id'] ) );
 		?>
            
 			<div class="card card_id<?php echo $value['id']; ?> w50" >
@@ -221,7 +222,7 @@
 							Mais detalhes
 						</button>
 
-						<?php if(@$_SESSION['sadm'] == true) { ?>
+						<?php if(@$_SESSION['sadm'] == true || @$VerificaAdm != "") { ?>
 							<button class="btn btn-info btn-100">
 								<a href="GestaoEvento?id=<?php echo $value['id'] ?>">Gerir</a>
 							</button>
