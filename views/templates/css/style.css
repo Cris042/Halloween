@@ -672,6 +672,23 @@ textarea:hover
 	-ms-transform:translate(-50%,15%);	
 }
 
+.form-evento
+{
+	width: 600px;
+	max-width: 90%;
+	max-height: 40% ;
+	height: 530px;
+	position: relative;
+	box-shadow: 0.2rem 0.2rem 0.3rem 0.3rem #000;
+	left: 50%;
+	top: 50%;
+	background: #3b125d;
+	border-radius: 30px;
+	transform:translate(-50%,15%);
+	-ms-transform:translate(-50%,15%);	
+}
+
+
 .from_img
 {
 	margin-top: 5%;
@@ -834,6 +851,7 @@ textarea
 	max-height: 150px;
 	min-height: 150px;
 	margin-left: 10%;
+	text-align: justify;
 	border-radius: 20px;
 	padding: 20px;
 }
